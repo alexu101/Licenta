@@ -1,0 +1,69 @@
+.filters{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    background-color: #efefdc;
+    width: 100%;
+    border-radius: 5px;
+    margin: 30px 5px;
+    padding-bottom: 10px;
+}
+
+#filterTitle{
+    font-size: 25px;
+    padding: 10px;
+    color: white;
+    background-color: #BBA3C4;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.formControl{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin:0;
+;
+}
+
+.formCategory{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    align-self: flex-start;
+    margin: 10px 10px;
+}
+
+ #formLabel{
+    font-size:17px !important;
+    font-weight: 600;
+} 
+
+.priceRange{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.priceLimits{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px 0px;
+}
+
+#slider{
+    width: 200px;
+    margin: 10px 0px;
+}
+
+.separator{
+    width: 90%;
+    height: 1px;
+    background-color: #d4d4d4;
+    margin: 10px 0px;
+    align-self: center;
+}
+
+.applyFiltersButton{
+    width: 90%;
+}
