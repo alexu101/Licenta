@@ -1,0 +1,159 @@
+.adminBoard{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.adminBoardTitle{
+    width: 15%;
+    margin:20px;
+    padding: 10px;
+    border-radius: 30px;
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+    display: flex;
+    align-items: center;
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.adminNavbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#viewMode{
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.toggleBtn{
+  width: 50%;
+  border: 2px solid #0093E9 !important;
+  font-weight: bold !important; 
+}
+
+.productsList{
+    display: flex;
+    flex-direction: column;
+}
+
+.productCardAdmin{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: solid 1px black;
+    border-radius: 30px;
+    height: 100px;
+    padding: 10px;
+}
+
+.productCardAdmin img{
+    height: 70% !important;
+}
+
+.actions{
+    display: flex;
+    align-self: center !important;
+    justify-content: right;
+}
+
+.actions button{
+    margin: 2px;
+    border-radius: 30px;
+    border: none;
+    padding: 10px;
+    font-weight: bold;
+    color: white;
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+}
+
+#cardImageAdmin{
+    height: 50px !important;
+}
+
+.editableInput{
+    width: 100px;
+    color: black;
+    padding: 10px 7px;
+    border-radius: 5px;
+    border:solid 1px #c4c4c4;
+}
+
+.editableInput:focus{
+    outline: none;
+    border:solid 1px #1975d0
+}
+
+.products{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.actionEditBtn{
+    margin: 2px;
+    border-radius: 30px !important;
+    border: none;
+    padding: 10px;
+    font-weight: bold !important;
+    color: white;
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+}
+
+.modal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    align-self: center !important;
+}
+
+.modalBtns button{
+    margin: 2px;
+    border-radius: 30px;
+    border: none;
+    padding: 10px;
+    font-weight: bold;
+    color: white;
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+}
+
+.importForm{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+}
+
+.importForm button{
+    margin: 2px;
+    border-radius: 30px;
+    border: none;
+    padding: 10px;
+    font-weight: bold;
+    color: white;
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+    cursor: pointer;
+}
+
+.exportButton{
+    margin: 2px;
+    border-radius: 30px;
+    border: none;
+    padding: 10px;
+    font-weight: bold;
+    color: white;
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+    cursor: pointer;
+}

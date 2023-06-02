@@ -1,14 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Filters.css'
 import { Checkbox, FormControl, FormControlLabel, FormLabel, RadioGroup } from '@mui/material';
 import Slider from '@mui/material/Slider';
 import Radio from '@mui/material/Radio';
 import { useState } from 'react';
 import Button from '@mui/material/Button'
+import { useFiltersContext } from '../hooks/useFiltersContext';
 
 function Filters() {
 
-    const [sliderValue, setSliderValue] = useState([0, 1000]) //price range
+    //use filters context to set the filters
+    const maxPrice = 20000
+    const [sliderValue, setSliderValue] = useState([0, 100]) //price range
     const [checkboxValue, setCheckboxValue] = useState({
         "dji": false,
         "autel": false,
@@ -17,6 +20,16 @@ function Filters() {
     const [autonomy, setAutonomy] = useState('none') //autonomy
     const [distance, setDistance] = useState('none') //distance
     const [load, setLoad] = useState('none') //load
+    const [inStock, setInStock] = useState(false) //inStock
+
+
+    //dispatch filters to context
+
+    const { products, dispatch } = useFiltersContext()
+
+    useEffect(() => {
+        dispatch({ type: 'SET_FILTERS', payload: { sliderValue, checkboxValue, autonomy, distance, load, inStock } })
+    }, [sliderValue, checkboxValue, autonomy, distance, load, dispatch, inStock])
 
 
     const handleSliderChange = (event) => {
@@ -25,27 +38,19 @@ function Filters() {
     };
 
     const handleRadioAutonomy = (event) => {
-        console.log(event.target.value)
         setAutonomy(event.target.value);
     };
 
     const handleRadioDistance = (event) => {
-        console.log(event.target.value)
         setDistance(event.target.value);
     };
 
     const handleRadioLoad = (event) => {
-        console.log(event.target.value)
         setLoad(event.target.value);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(checkboxValue)
-        console.log(autonomy)
-        console.log(distance)
-        console.log(load)
-        console.log(sliderValue)
     }
 
     return (
@@ -68,12 +73,22 @@ function Filters() {
                 <div className="separator" />
 
                 <div className="formCategory">
+                    <FormLabel id="formLabel">VALABILITATE</FormLabel>
+                    <FormControlLabel value={inStock} control={<Checkbox />} label="In stoc" onChange={(e) => {
+                        setInStock(e.target.checked)
+                    }} />
+                </div>
+
+                <div className="separator" />
+
+                <div className="formCategory">
                     <FormLabel id="formLabel">AUTONOMIE TIMP DE ZBOR</FormLabel>
                     <RadioGroup defaultValue="none" name="autonomy-radio-buttons-group" onChange={handleRadioAutonomy} >
                         <FormControlLabel value="none" control={<Radio />} label="Indiferent" />
-                        <FormControlLabel value="35" control={<Radio />} label=">35min" />
-                        <FormControlLabel value="25,35" control={<Radio />} label="25min-35min" />
+                        <FormControlLabel value="0,10" control={<Radio />} label="<10min" />
                         <FormControlLabel value="10,25" control={<Radio />} label="10min-25min" />
+                        <FormControlLabel value="25,35" control={<Radio />} label="25min-35min" />
+                        <FormControlLabel value="35,1000" control={<Radio />} label=">35min" />
                     </RadioGroup>
                 </div>
 
@@ -83,7 +98,7 @@ function Filters() {
                     <FormLabel id="formLabel">DISTANTA MAX. DE OPERARE</FormLabel>
                     <RadioGroup defaultValue="none" name="distance-radio-buttons-group" onChange={handleRadioDistance}>
                         <FormControlLabel value="none" control={<Radio />} label="Indiferent" />
-                        <FormControlLabel value="9000" control={<Radio />} label=">9000m" />
+                        <FormControlLabel value="9000,100000" control={<Radio />} label=">9000m" />
                         <FormControlLabel value="4000,9000" control={<Radio />} label="4000m-9000m" />
                         <FormControlLabel value="1000,4000" control={<Radio />} label="1000m-9000m" />
                     </RadioGroup>
@@ -98,7 +113,7 @@ function Filters() {
                         <FormControlLabel value="0,250" control={<Radio />} label="<250G" />
                         <FormControlLabel value="250,500" control={<Radio />} label="250g-500g" />
                         <FormControlLabel value="500,2000" control={<Radio />} label="500g-2kg" />
-                        <FormControlLabel value="2000" control={<Radio />} label=">2kG" />
+                        <FormControlLabel value="2000,1000000" control={<Radio />} label=">2kG" />
                     </RadioGroup>
                 </div>
 
@@ -107,14 +122,13 @@ function Filters() {
                 <div className="formCategory">
                     <FormLabel id="formLabel">PRET</FormLabel>
                     <div className="priceRange">
-                        <Slider value={sliderValue} onChange={handleSliderChange} disableSwap step={10} id="slider" />
+                        <Slider value={sliderValue} onChange={handleSliderChange} disableSwap step={1} id="slider" />
                         <div className="priceLimits">
-                            <span className="priceRangeMin">{`${sliderValue[0]} Lei`}</span>
-                            <span className="priceRangeMax">{`${sliderValue[1]} Lei`}</span>
+                            <span className="priceRangeMin">{`${sliderValue[0] / 100 * maxPrice} Lei`}</span>
+                            <span className="priceRangeMax">{`${sliderValue[1] / 100 * maxPrice} Lei`}</span>
                         </div>
                     </div>
                 </div>
-                <Button variant='contained' className='applyFiltersButton' type='submit'>APPLY FILTERS</Button>
             </FormControl>
         </div>
     )

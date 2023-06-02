@@ -37,7 +37,7 @@ function LoginPage() {
                     {error && <div className='error'>{error}</div>}
                 </FormControl>
             </Paper>
-            <Link to="/terms&conditions" className='createAccount'>CREATE AN ACCOUNT ON DRONAZON!</Link>
+            <Link to="/signup" className='createAccount'>CREATE AN ACCOUNT ON DRONAZON!</Link>
         </div>
 
     )

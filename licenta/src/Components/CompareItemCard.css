@@ -1,0 +1,16 @@
+.compareItemCard{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-between;
+    margin:0px 20px;
+}
+
+.compareItemCard img{
+    height: 100px;
+    width: 100px;
+}
+
+.compareItemCardTitle{
+    width: 100px;
+}

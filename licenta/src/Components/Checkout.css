@@ -1,0 +1,173 @@
+.checkout{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.checkoutTitle{
+    display: flex;
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+    padding: 10px;
+    color:white;
+    font-weight: 600;
+    font-size: 20px;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 30px;
+    align-self: flex-start;
+    width: 15%;
+    margin:50px 5px;
+    margin-top:70px;
+}
+
+.checkout{
+    display: flex;
+    flex-direction: column;
+}
+
+.checkoutContainer{
+    display: flex;
+}
+
+
+.accordion{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+#accordionSummary{
+    font-size: 20px;
+}
+
+.address{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.delivery{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+}
+
+.homeDelivery,.pickUpDelivery{
+    display: flex;
+    align-items: center;
+    margin:5px;
+    border:solid 1px black;
+    padding: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 50%;
+    justify-content: center;
+    border:solid 2px;
+}
+
+.homeDelivery > *,.pickUpDelivery > *{
+    margin: 0px 5px;
+}
+
+.name{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.addressInput{
+    width: 98%;
+    padding: 0;
+    margin:0;
+}
+
+.autocompleteWrapper{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.placesAutocomplete{
+    display:flex;
+}
+
+.autocomplete-dropdown-container{
+    display: flex;
+    flex-direction: column;
+    width:500px;
+    margin-bottom: 10px;
+}
+
+.contactDetails{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.phoneNumber{
+    margin-top:8px !important;
+}
+
+.autocomplete-dropdown-container{
+   padding: 10px;
+}
+
+.productsOverview{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    height: 735px;
+    width: 300px;
+    margin:0px 10px;
+    padding: 10px;
+    border: solid 1px grey;
+    border-radius: 5px;
+}
+
+.productsOverview img{
+    width: 100px;
+}
+
+.productsOverviewTitle{
+    align-self: center;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.productsOverviewContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    padding: 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;
+}
+
+.productOverview{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    padding: 5px;
+    border:solid 1px grey;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.totalToPay{
+    position: sticky;
+    bottom:0px;
+    background-color: #00a3e9;
+    color: white;
+    font-weight: 500;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 15px;
+    margin-top: 20px;
+}

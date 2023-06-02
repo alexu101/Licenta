@@ -1,0 +1,94 @@
+.productCard{
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: self-start;
+    justify-content: space-between;
+    position:relative;
+    height: 550px;
+}
+
+#cardImage{
+    width: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    align-self: center;
+}
+
+.productPrice{
+    margin: 15px 0px;
+    display: flex;
+    flex-direction: column;
+}
+
+.oldPrice{
+    font-size: 12px;
+    text-decoration-line: line-through;
+}
+
+.newPrice{
+    font-size: 20px;
+    font-weight: 700;
+    color:rgb(193, 0, 0);
+    margin-right: 5px;
+}
+
+.inStock{
+    display:flex;
+    align-items: center;
+    font-size: 15px;
+    color: green;
+    margin-bottom: 10px;
+}
+
+.outOfStock{
+    color: red;
+    font-size: 15px;
+}
+
+.codArticol, .producator{
+    font-size: 13px;
+    margin:2px 0;
+}
+
+.cardActions{
+    align-self: center;
+    display: flex;
+    align-items: center;
+}
+
+.addToBasket{
+    /* margin: 10px 10px; */
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+    color: white;
+    font-weight: 600;
+    font-size: 15px;
+    border-radius: 5px;
+    width: 240px;
+}
+
+.currentPrice{
+    font-size: 20px;
+    font-weight: 700;
+    color:black
+}
+
+.favouriteButton{
+    right:0;
+    top:10px;
+}
+
+.oldPriceContainer{
+    display: flex;
+}
+
+.productTitle{
+    font-size: 18px;
+    font-weight: 600;
+    margin: 10px 0px;
+}
+
+.productCardLink{
+align-self: center;
+}

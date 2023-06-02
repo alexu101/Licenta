@@ -9,14 +9,14 @@ const productSchema = new Schema({
     },
     currentPrice: {
         type: Number,
-        required: True
+        required: true
     },
     oldPrice: {
         type: Number,
         required: false
     },
     inStock: {
-        type: String,
+        type: Boolean,
         required: true
     },
     serialCode: {
@@ -38,6 +38,14 @@ const productSchema = new Schema({
     load: {
         type: [Number],
         required: true
+    },
+    rating: {
+        type: [Object],
+        required: false
+    },
+    description: {
+        type: String,
+        required: false
     },
 
 }, { timestamps: true })

@@ -1,25 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useLogout } from '../hooks/useLogout'
 import logo from '../assets/logo.png'
 import search from '../assets/search.png'
 import basketIcon from '../assets/basket.png'
 import "./Navbar.css"
+import { useAuthContext } from '../hooks/useAuthContext'
+import { Link } from 'react-router-dom'
+import { useBasketContext } from '../hooks/useBasketContext'
+import { useEffect } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faRightFromBracket, faCartShopping } from '@fortawesome/free-solid-svg-icons'
+import SearchBar from './SearchBar'
+import MenuIcon from '@mui/icons-material/Menu';
+import { IconButton } from '@mui/material'
 
 function Navbar() {
+    const [burgerMenuOpen, setBurgerMenuOpen] = useState(false)
     const { logout } = useLogout()
-    const handleClick = () => {
+    const handleLogout = () => {
         logout()
     }
 
-    // return (
-    //     <div>Navbar
-    //         <button onClick={handleClick}>Log out</button>
-    //     </div>
-    // )
+    const user = JSON.parse(localStorage.getItem('user'))
+    const logged = user ? true : false
 
-    let user = ''
-    let basket = 'ok'
-
+    const openBurgerMenu = () => {
+        setBurgerMenuOpen(!burgerMenuOpen)
+    }
 
     return (
         <div className="navbar">
@@ -28,32 +35,66 @@ function Navbar() {
                 <img src={logo} alt="logo" id='logo' />
 
                 {/* searchbar} */}
-                <div className="searchbar">
-                    <input type="text" placeholder="Search" className='searchInput' />
-                    <img src={search} alt="search" className="searchIcon" />
-                </div>
+                <SearchBar />
 
                 {/* rightcontainer */}
                 <div className="navButtons">
-                    <div className="navButton">
+                    <Link className="navButton" to="/login">
                         <p>Hello,</p>
-                        <p>{user ? user?.email : "Guest"}</p>
+                        <p>{user ? user?.email.split('@')[0] : "Guest"}</p>
+                    </Link>
+                    {
+                        logged &&
+                        <Link to={'/orders'} className='link'>
+                            <div className="navButton">
+                                <p>Your</p>
+                                <p>Orders</p>
+                            </div>
+                        </Link>
+                    }
+                    <div className="navButton">
+                        <Link to={'/basket'} className='link'>
+                            <FontAwesomeIcon icon={faCartShopping} />
+                        </Link>
                     </div>
                     <div className="navButton">
-                        <p>Return</p>
-                        <p>& Orders</p>
-                    </div>
-                    <div className="navButton">
-                        <img src="http://localhost:9993/pic1.png" alt="basket" />
-                        <p>{basket?.length}</p>
+                        <FontAwesomeIcon icon={faRightFromBracket} onClick={handleLogout} />
                     </div>
                 </div>
             </div>
 
             {/* mobile searchbar} */}
             <div className="mobileSearchbar">
-                <input type="text" placeholder="Search" className='searchInput' />
-                <img src={search} alt="search" className="searchIcon" />
+                {/* searchbar} */}
+                <SearchBar />
+                <div className="burgerMenu">
+                    <IconButton onClick={openBurgerMenu}>
+                        <MenuIcon />
+                    </IconButton>
+                </div>
+                {burgerMenuOpen && <div className="burgerContent">
+                    <Link className="navButton" to="/login">
+                        <p>Hello,</p>
+                        <p>{user ? user?.email.split('@')[0] : "Guest"}</p>
+                    </Link>
+                    {
+                        logged &&
+                        <Link to={'/orders'} className='link'>
+                            <div className="navButton">
+                                <p>You Orders</p>
+                            </div>
+                        </Link>
+                    }
+                    <div className="navButton">
+                        <Link to={'/basket'} className='link'>
+                            <p>Basket</p>
+                        </Link>
+                    </div>
+                    <div className="navButton">
+                        <p>Logout</p>
+                    </div>
+
+                </div>}
             </div>
         </div>
     )

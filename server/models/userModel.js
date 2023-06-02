@@ -13,6 +13,14 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true
+    },
+    basket: {
+        type: [String],
+        required: false
+    },
+    orders: {
+        type: [String],
+        required: false
     }
 })
 

@@ -1,6 +1,17 @@
 {
   "dependencies": {
+    "buffer": "^6.0.3",
+    "crypto": "^1.0.1",
+    "crypto-browserify": "^3.12.0",
+    "csv-stringify": "^6.4.0",
+    "file-saver": "^2.0.5",
+    "file-server": "^2.2.1",
+    "jsonwebtoken": "^9.0.0",
+    "jwt-decode": "^3.1.2",
+    "papaparse": "^5.4.1",
     "react-router-dom": "^6.10.0",
-    "styled-components": "^5.3.9"
+    "stream": "^0.0.2",
+    "styled-components": "^5.3.9",
+    "util": "^0.12.5"
   }
 }

@@ -26,21 +26,19 @@ const getProduct = async (req, res) => {
 }
 
 //create new product
-const createProduct = async (res, req) => {
-    const { title, category, currentPrice, inStock, serialCode, producer, autonomy, range, load } = req.body
+const createProduct = async (req, res) => {
+
+    const { title, oldPrice, currentPrice, inStock, serialCode, producer, autonomy, range, load } = req.body
 
     let emptyFields = []
 
     if (!title)
         emptyFields.push('title')
 
-    if (!category)
-        emptyFields.push('category')
-
     if (!currentPrice)
         emptyFields.push('currentPrice')
 
-    if (!inStock)
+    if (!inStock && inStock != false)
         emptyFields.push('inStock')
 
     if (!serialCode)
@@ -63,7 +61,11 @@ const createProduct = async (res, req) => {
 
     //add product to db
     try {
-        const product = await Product.create({ title, category, currentPrice, inStock, serialCode, producer })
+        if (oldPrice) {
+            const product = await Product.create({ title, oldPrice, currentPrice, inStock, serialCode, producer, autonomy, range, load })
+            return res.status(200).json(product)
+        }
+        const product = await Product.create({ title, currentPrice, inStock, serialCode, producer, autonomy, range, load })
         res.status(200).json(product)
     } catch (error) {
         res.status(400).json({ error: error.message })
@@ -71,7 +73,7 @@ const createProduct = async (res, req) => {
 }
 
 //delete a product
-const deleteProduct = async (res, req) => {
+const deleteProduct = async (req, res) => {
     const { id } = req.params
 
     if (!mongoose.Types.ObjectId.isValid(id))
@@ -92,7 +94,13 @@ const updateProduct = async (req, res) => {
     if (!mongoose.Types.ObjectId.isValid(id))
         return res.status(404).json({ error: 'No such product' })
 
-    const product = await Product.findOneAndUpdate({ _id: id }, { ...req.body })
+    //check if oldPrice is not a number, than it is null
+    if (req.body.oldPrice && isNaN(req.body.oldPrice))
+        req.body.oldPrice = null
+
+    const product = await Product.findOneAndUpdate({ _id: id }, { ...req.body }, { new: true })
+
+    console.log(product)
 
     if (!product) {
         return res.status(400).json({ error: 'No such product' })
@@ -101,10 +109,44 @@ const updateProduct = async (req, res) => {
     res.status(200).json(product)
 }
 
+const getMultipleProducts = async (req, res) => {
+
+    const { ids } = req.body
+
+    //its it s an array of strings
+
+    const products = await Product.find({ _id: { $in: ids } })
+
+    res.status(200).json(products)
+
+}
+
+const getRating = async (req, res) => {
+    const { id } = req.params
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({ error: 'No such product' })
+    }
+
+    //get the array of ratings from the prodcut with that id
+
+    const product = await Product.findById(id)
+
+    if (!product) {
+        return res.status(400).json({ error: 'No such product' })
+    }
+
+    res.status(200).json(product.rating)
+}
+
+
+
 module.exports = {
     getProducts,
     getProduct,
     createProduct,
     deleteProduct,
-    updateProduct
+    updateProduct,
+    getMultipleProducts,
+    getRating
 }

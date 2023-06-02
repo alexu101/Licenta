@@ -1,0 +1,148 @@
+.product{
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.productContainer{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    align-self: center;
+    justify-self: center;
+    padding: 20px;
+}
+
+.upperRightPart{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.upperPart{
+    display: flex;
+    flex-direction:row;
+}
+
+.title{
+    font-size: 20px;
+    font-weight: 500;
+    width: 100px !important;
+}
+
+.rating{
+    display: flex;
+}
+
+.limit{
+    width: 100%;
+    border: solid 1px rgb(231, 231, 231);
+    margin: 10px 0px
+}
+
+.price{
+    font-size: 20px;
+    display: flex;
+    align-items: center ;
+    font-weight: 400;
+}
+
+.priceValue{
+    margin-left: 5px;
+    font-size: 20px;
+    font-weight: 500;
+    color: rgb(178, 0, 0);
+}
+
+.addToCartButton{
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+    border-radius: 5px;
+    width: 240px;
+    cursor: pointer;
+}
+
+#logoPic{
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.reviews{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin-left: 20px;
+    justify-content: space-between;
+}
+
+.reviews > * {
+    margin:5px 0px
+}
+
+.reviewsTitle{
+    font-size: 20px;
+    font-weight: 500;
+    margin: 10px 0px;
+}
+
+.sort{
+    display:flex;
+    align-items: center;
+    margin:10px 0px;
+}
+
+.sort > *{
+    margin:0px 10px;
+}
+
+.sortButton,.compareButton{
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+    color: white !important;
+    font-weight: 600;
+    font-size: 20px;
+    border-radius: 5px;
+    width: 240px;
+    cursor: pointer;
+    margin:0px 10px !important;
+    border:1px solid !important;
+}
+
+.sortButton:hover,.compareButton:hover{
+    color:#0093E9;
+    border:1px solid #0093E9 !important;
+}
+
+/*responsivenesss*/
+
+@media only screen and (max-width: 1200px) {
+    #logoPic{
+        width: 250px;
+        height: 250px;
+        align-self: center;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    #logoPic{
+        width: 200px;
+        height: 200px;
+        align-self: center;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    #logoPic{
+        width: 160px;
+        height: 160px;
+        align-self: center;
+    }
+}
+
+
+
